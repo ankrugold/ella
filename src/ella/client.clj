@@ -15,8 +15,8 @@
   ESProto
   (init [_] (reset! client (let [cl (new TransportClient
                                          (.build (doto (ImmutableSettings/settingsBuilder)
-                                                   (.put "cluster.name" cfg))))]
-                             (.addTransportAddress cl (new InetSocketTransportAddress "localhost" 9300)) cl)))
+                                                   (.put "cluster.name" (:cname cfg)))))]
+                             (.addTransportAddress cl (new InetSocketTransportAddress (:ip cfg) 9300)) cl)))
 
   ;(init[^String clustername ^String ip] (reset! client (let [cl (new TransportClient
   ;                                                     (.build (doto (ImmutableSettings/settingsBuilder)
